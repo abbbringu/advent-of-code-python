@@ -1,4 +1,5 @@
 
+# ------------------- Part A -------------------
 def findHeighest(lines: list):
     # Values for returning highest and for temp usage
     hi = 0
@@ -15,6 +16,8 @@ def findHeighest(lines: list):
 
     return(hi)
 
+
+# ------------------- Part B -------------------
 def totalCalories(lines: list):
     # Look for top three elf with most calories 
     temp = 0
