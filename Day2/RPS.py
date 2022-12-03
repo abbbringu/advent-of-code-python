@@ -1,5 +1,5 @@
 
-
+# ------------------- Part A -------------------
 def personalTotalScore(lines: list) -> int:
     rps = ['A', 'B', 'C']
     rpsme = ['X\n', 'Y\n', 'Z\n']
@@ -28,6 +28,7 @@ def personalTotalScore(lines: list) -> int:
     return score
 
 
+# ------------------- Part B -------------------
 def personalTotalScoreNew(lines: list) -> int:
     rps = ['A', 'B', 'C']
     winCondition = ['X\n', 'Y\n', 'Z\n']
