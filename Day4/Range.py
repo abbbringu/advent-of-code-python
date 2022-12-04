@@ -49,15 +49,19 @@ def overlap(lines) -> int:
         secondTime = int(Range1[1]) - int(Range2[0]) 
 
         """
-        Three cases:
+        Two cases:
         ...45678..      first will be negative and second will be positive
         ....56789.      first = 4 - 9       second = 8 - 5
 
         ...45678..      first = 4 - 7       second = 8 - 3
         ..34567...      
 
-        The prduct will be negative if they overlap, the one range is the the right or left
+        If one range does not overlap, first and second will both be either
+        negative or positive
+
+        The product will be negative if they overlap, the one range is the the right or left
         they both will either be positive or negative, meaning their product would be > 0
+        And if difference is 0, it will also overlap ("They have the same value")
         """
 
         if firstTime * secondTime <= 0:
@@ -74,10 +78,10 @@ def main():
     with open('./Day4/input.txt') as f:
             # Every row into array
             lines = f.readlines()
+            # Part A
             fullContain = containEachOther(lines)
+            # Part B
             overlapping = overlap(lines)
             print(f"Answer in part A: {fullContain} \nAnswer for part B: {overlapping}")
-
-
 
 main()
