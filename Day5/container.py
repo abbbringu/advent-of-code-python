@@ -52,7 +52,6 @@ def rebuild2(container, instruction):
 
 def main():
     with open('./Day5/input.txt') as f:
-        instructBegins = 11
         # Every row into array
         lines = f.readlines()
         container = buildContainer(lines)
