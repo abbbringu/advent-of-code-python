@@ -8,7 +8,7 @@ Save positions of head and tail in a tupel
 * Put the new tail position in the visited list
 * Continue untill out of orders
 """
-
+# ------------------- Part A -------------------
 def visited(lines):
     visited = [[0,0]]
     # Positions:
@@ -47,6 +47,7 @@ def visited(lines):
     return result
 
 
+# ------------------- Part B -------------------
 def visitedTen(lines):
     visited = [[0,0]]
     # Positions:
