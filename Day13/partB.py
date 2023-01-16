@@ -1,18 +1,15 @@
 import json
 pairs = []
 
-# Build our and sort our data
+# Build our and sort our data modified for B
 with open('./Day13/input.txt') as f:
     lines = f.readlines()
-    pair = []
     for line in lines:
-        # When new line, we append the pair and start a new one
         if line == "\n":
-            pairs.append(pair)
-            pair = []
+            continue
         else:
             line = line.strip()
-            pair.append(json.loads(line))
+            pairs.append(json.loads(line))
 
 # Helper function for comp
 def compare(l: int, r: int):
@@ -40,13 +37,17 @@ def comp(left, right) -> int:
                     return res
             return comp(len(left), len(right))
 
-# Loops through all paris
+# The index is equal to the amount of items that are lower in pairs
 index = 1
-correct = []
-for pair in pairs:
-    left, right = pair[0], pair[1]
-    if comp(left, right) == 1:
-        correct.append(index)
-    index += 1
-#print(sum(correct))
+firstInd = 1 # 1 indexing
+secondInd = 2 # considering first
+first = [[2]]
+second = [[6]]
+
+for pkt in pairs:
+    firstInd += (1 if comp(pkt, first) == 1 else 0)
+    secondInd += (1 if comp(pkt, second) == 1 else 0)
+
+
+print(firstInd*secondInd)
 
