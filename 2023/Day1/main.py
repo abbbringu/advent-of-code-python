@@ -18,32 +18,25 @@ def partTwo(lines):
                   "five", "six", "seven", "eight", "nine"]
     for line in lines:
         numerical = []
-        my_string = "one two three four five six seven eight nine"
-        my_pattern = "(?=(one|two|three|four|five|six|seven|eight|nine))"
-        matches = [match.group(0)
-                   for match in re.finditer(my_pattern, my_string)]
-        print(matches)
-
-        test = [match for match in re.finditer(my_pattern, line)]
-        print(test)
-        matches = re.finditer(
-            "one|two|three|four|five|six|seven|eight|nine", line)
+        # Search for each letter digit at a time, since finditer doesn't consider overlap
+        for number in numberList:
+            [numerical.append((numberList.index(match.group()), match.start())) for match in re.finditer(number, line)]
         m = re.finditer(r"\d", line)
 
+        # Match with digits and append to array.
         for match in m:
             numerical.append((int(match.group()), match.start()))
-        for match in matches:
-            print(match.group())
-            numerical.append(
-                (numberList.index(match.group()), match.start()))
 
+        # Sort them accourding to their position
         numerical.sort(key=lambda x: x[1])
+        # Get the two with the highest and lowest position in the string
         hi, lo = numerical[0][0], numerical[-1][0]
 
         comb = str(hi) + str(lo)
-        print(comb, line, numerical)
+        # print(comb, line, numerical)
         sumOfCalibrations += int(comb)
-    print(sumOfCalibrations)
+
+    print("Consdier letter digits, the correct calibrations are:", sumOfCalibrations)
 
 
 def main():
@@ -51,9 +44,7 @@ def main():
     with open('./2023/Day1/input.txt') as f:
         # Every row into array
         lines = f.readlines()
-
-        # jkrbkfsevencnvzp89vhmsdcfcthreetwonedrl
-        partTwo(["eightwo"])
+        partTwo(lines)
 
         # 55358 är svaret till ryans
 main()
